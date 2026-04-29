@@ -3,332 +3,250 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>関西子連れ混雑速報｜今日どこ行く？が1分でわかる</title>
-<meta name="description" content="関西のおでかけスポットの混雑・駐車場・子連れ目線の注意点をまとめています。USJ、万博記念公園など、今日どこへ行くかの判断に。">
+<title>【4/30版】関西子連れおでかけ混雑速報｜今日行くならどこ？</title>
+<meta name="description" content="2026年4月30日に関西で子連れおでかけするならどこ？USJ、万博記念公園、海遊館、ニフレル、EXPOCITY、天王寺動物園、京都水族館、大阪城公園の混雑・駐車場・子連れ目線まとめ。">
 <style>
-  :root {
-    --blue:#075fc0;
-    --blue2:#0f7bdc;
-    --bg:#f5f7fb;
-    --text:#111827;
-    --muted:#6b7280;
-    --line:#e5e7eb;
-    --red:#dc2626;
-  }
-  body {
-    margin:0;
-    background:var(--bg);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    color:var(--text);
-  }
-  header {
-    background:#fff;
-    border-bottom:1px solid var(--line);
-    padding:18px 16px;
-  }
-  header h1 {
-    margin:0;
-    font-size:22px;
-    line-height:1.35;
-  }
-  header p {
-    margin:6px 0 0;
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.6;
-  }
-  main {
-    padding:16px;
-    max-width:760px;
-    margin:0 auto;
-  }
-  .hero {
-    background:linear-gradient(135deg,#073b7a,#0f7bdc);
-    color:white;
-    padding:20px;
-    border-radius:20px;
-    margin-bottom:16px;
-  }
-  .hero .label {
-    font-size:13px;
-    opacity:.9;
-  }
-  .hero .title {
-    font-size:25px;
-    font-weight:800;
-    line-height:1.45;
-    margin-top:8px;
-  }
-  .hero .body {
-    font-size:14px;
-    line-height:1.75;
-    opacity:.96;
-    margin-top:10px;
-  }
-  .quick {
-    display:grid;
-    grid-template-columns:1fr;
-    gap:10px;
-    margin-bottom:16px;
-  }
-  .quick-card {
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:14px;
-  }
-  .quick-card strong {
-    display:block;
-    font-size:16px;
-    margin-bottom:4px;
-  }
-  .quick-card span {
-    font-size:13px;
-    color:var(--muted);
-    line-height:1.6;
-  }
-  .card {
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:18px;
-    margin-bottom:16px;
-    box-shadow:0 2px 10px rgba(0,0,0,.04);
-  }
-  .spot-title {
-    font-size:22px;
-    font-weight:800;
-    margin-bottom:4px;
-  }
-  .meta {
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:12px;
-    line-height:1.6;
-  }
-  .score {
-    display:inline-block;
-    padding:7px 10px;
-    border-radius:999px;
-    font-size:13px;
-    font-weight:700;
-    margin-bottom:14px;
-  }
-  .warn { background:#fef3c7; color:#92400e; }
-  .danger { background:#fee2e2; color:#991b1b; }
-  .ok { background:#d1fae5; color:#065f46; }
-  h2 {
-    font-size:16px;
-    margin:18px 0 8px;
-  }
-  p, li {
-    font-size:15px;
-    line-height:1.8;
-  }
-  ul {
-    padding-left:20px;
-    margin-top:6px;
-  }
-  .alert {
-    border-left:4px solid var(--red);
-    padding:12px;
-    color:#991b1b;
-    background:#fff1f2;
-    border-radius:10px;
-    margin-top:14px;
-    font-size:14px;
-    line-height:1.7;
-  }
-  .cta {
-    margin-top:16px;
-    background:#f1f5ff;
-    border:1px solid #c7d2fe;
-    border-radius:16px;
-    padding:14px;
-  }
-  .cta h2 {
-    margin-top:0;
-  }
-  .btn {
-    display:block;
-    background:var(--blue);
-    color:white;
-    text-decoration:none;
-    font-weight:800;
-    padding:12px 14px;
-    border-radius:12px;
-    margin:9px 0;
-    text-align:center;
-  }
-  .btn.sub {
-    background:#ffffff;
-    color:var(--blue);
-    border:1px solid #bfdbfe;
-  }
-  .source {
-    background:#f9fafb;
-    padding:12px;
-    border-radius:12px;
-    font-size:13px;
-    line-height:1.7;
-    color:#374151;
-    margin-top:10px;
-  }
-  .footer {
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.7;
-    margin:20px 4px 40px;
-  }
-  .small-note {
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.6;
-    margin-top:8px;
-  }
+body{margin:0;background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827}
+header{background:#fff;border-bottom:1px solid #e5e7eb;padding:16px}
+main{padding:16px;max-width:760px;margin:auto}
+h1{font-size:22px;margin:0 0 6px}
+h2{font-size:20px;margin:0 0 8px}
+h3{font-size:16px;margin:18px 0 8px}
+p,li{font-size:15px;line-height:1.75}
+.hero{background:linear-gradient(135deg,#073b7a,#0f7bdc);color:#fff;padding:20px;border-radius:18px;margin-bottom:16px}
+.hero-title{font-size:24px;font-weight:800;line-height:1.45;margin-top:8px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.rank{display:grid;gap:10px;margin-bottom:16px}
+.rank-item{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px}
+.badge{display:inline-block;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:700;margin-bottom:10px}
+.ok{background:#d1fae5;color:#065f46}
+.warn{background:#fef3c7;color:#92400e}
+.danger{background:#fee2e2;color:#991b1b}
+.cta{margin-top:14px;padding:13px;background:#eef4ff;border:1px solid #c7d2fe;border-radius:14px}
+.btn{display:block;margin:8px 0;padding:11px 12px;background:#2563eb;color:#fff;text-align:center;border-radius:10px;text-decoration:none;font-weight:800}
+.btn.sub{background:#fff;color:#2563eb;border:1px solid #bfdbfe}
+.note{font-size:12px;color:#6b7280;line-height:1.6}
+.alert{border-left:4px solid #dc2626;background:#fff1f2;color:#991b1b;padding:10px 12px;border-radius:10px;margin-top:12px;font-size:14px;line-height:1.7}
+.footer{font-size:12px;color:#6b7280;line-height:1.7;margin:22px 4px 40px}
 </style>
 </head>
+
 <body>
 <header>
-  <h1>関西子連れ混雑速報</h1>
-  <p>今日どこ行く？が1分でわかる｜混雑・駐車場・子連れ目線でおでかけ判断</p>
+<h1>関西子連れおでかけ混雑速報</h1>
+<p>2026年4月30日版｜今日行くならどこ？を1分で判断</p>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="label">今日の判断｜最終更新：2026/04/29 13:22</div>
-    <div class="title">USJは中〜やや混雑。万博記念公園はイベント開催で駐車場注意。</div>
-    <div class="body">
-      「検索して調べるのが面倒」「子連れで失敗したくない」人向けに、混雑・駐車場・時間帯の注意点をまとめています。
-      まずは結論を見て、行き先を決める材料にしてください。
-    </div>
-  </section>
 
-  <section class="quick">
-    <div class="quick-card">
-      <strong>🎢 USJ</strong>
-      <span>午前中ならまだ動きやすい可能性あり。午後は混雑上昇に注意。</span>
-    </div>
-    <div class="quick-card">
-      <strong>🌼 万博記念公園</strong>
-      <span>イベント開催で人出あり。車より公共交通機関がおすすめ。</span>
-    </div>
-  </section>
+<section class="hero">
+<div>4/30（木）GW谷間の平日</div>
+<div class="hero-title">今日は「屋内系」と「電車で行ける広い公園」が狙い目</div>
+<p>
+GW後半の5/3〜5ほどではありませんが、人気スポットは通常平日より人が多め。
+車移動は万博・EXPOCITY周辺で混雑リスクあり。子連れなら「午前早め」か「夕方寄り」が安全です。
+</p>
+</section>
 
-  <section class="card">
-    <div class="spot-title">USJ</div>
-    <div class="meta">大阪市此花区 / 混雑・待ち時間情報ベース / 子連れ目線</div>
-    <div class="score warn">混雑度：★★★☆☆　中〜やや混雑</div>
+<section class="card">
+<h2>今日のおすすめランキング</h2>
+<div class="rank">
+<div class="rank-item"><strong>1位：海遊館</strong><br>屋内で天候に左右されにくい。夕方以降が狙い目。</div>
+<div class="rank-item"><strong>2位：ニフレル</strong><br>短時間でも楽しみやすい。午前は団体に注意。</div>
+<div class="rank-item"><strong>3位：万博記念公園</strong><br>電車ならあり。車は駐車場・周辺道路に注意。</div>
+</div>
+</section>
 
-    <h2>結論</h2>
-    <p>
-      今日のUSJは、祝日・大型連休の影響で通常より人出が多くなりやすい日です。
-      ただし、朝時点では「終日避けるべき」というより、時間帯を選べば楽しめる可能性があります。
-      子連れなら、午前中に人気エリアを優先して回るのが無難です。
-    </p>
+<section class="card">
+<h2>混雑注意ランキング</h2>
+<div class="rank">
+<div class="rank-item"><strong>1位：USJ</strong><br>普通〜やや混雑。人気エリアは朝から動くのが安全。</div>
+<div class="rank-item"><strong>2位：EXPOCITY</strong><br>GW期間中は周辺道路・駐車場に注意。</div>
+<div class="rank-item"><strong>3位：万博記念公園</strong><br>園内は広いが、イベント・花・駐車場で局所混雑。</div>
+</div>
+</section>
 
-    <h2>背景情報</h2>
-    <p>
-      USJは大型連休中、昼前後から来場者が増えやすく、人気アトラクション・レストラン・グッズ売り場に人が集中しやすくなります。
-      特に任天堂エリアや人気アトラクションは待ち時間が伸びやすいため、入園後すぐに優先順位を決めて動くのがおすすめです。
-    </p>
+<section class="card">
+<h2>USJ</h2>
+<div class="badge warn">★★★☆☆ 普通〜やや混雑</div>
+<p>
+4/30はGW谷間の平日ですが、USJは連休中の来園者が残りやすい日です。
+朝から人気エリアに人が集まりやすく、午後は飲食・グッズ・人気アトラクションで待ち時間が伸びる可能性があります。
+</p>
+<h3>子連れなら</h3>
+<ul>
+<li>朝から行けるならあり</li>
+<li>任天堂エリア・人気アトラクションを先に回る</li>
+<li>昼食は11時台か14時以降にずらす</li>
+</ul>
+<div class="alert">⚠️ 午後から行くなら、全部回る前提にしない方が安全。</div>
+<div class="cta">
+<strong>行く前に確認</strong>
+<a class="btn" href="https://travel.rakuten.co.jp/" target="_blank" rel="nofollow sponsored noopener">🏨 USJ周辺ホテルを見る</a>
+<a class="btn sub" href="https://www.usj.co.jp/web/ja/jp/tickets/" target="_blank" rel="noopener">🎫 USJ公式チケットを確認</a>
+</div>
+</section>
 
-    <h2>子連れ目線の注意点</h2>
-    <ul>
-      <li>昼食時間帯は飲食店が混みやすいので、早めの食事が安全です。</li>
-      <li>ベビーカー移動は、混雑エリアを避けるとかなり楽になります。</li>
-      <li>午後から行く場合は、人気エリアを全部回る前提にしない方がストレスが少ないです。</li>
-      <li>チケットやホテルは事前確認しておくと当日の迷いが減ります。</li>
-    </ul>
+<section class="card">
+<h2>万博記念公園</h2>
+<div class="badge warn">★★★☆☆ 電車ならあり</div>
+<p>
+4/30はロハスフェスタの開催日ではなく、ネモフィラ・ポピーフェスタも4/29までのため、前日よりは落ち着く可能性があります。
+ただしGW期間中で、周辺のEXPOCITY利用者もいるため、車移動は油断できません。
+</p>
+<h3>子連れなら</h3>
+<ul>
+<li>電車なら候補に入れてOK</li>
+<li>車なら午前早め到着が安全</li>
+<li>芝生エリア中心に動くと楽</li>
+</ul>
+<div class="alert">⚠️ 駐車場・周辺道路はGWモードで考えるのが安全。</div>
+<div class="cta">
+<strong>行く前に確認</strong>
+<a class="btn" href="https://www.akippa.com/" target="_blank" rel="nofollow sponsored noopener">🚗 周辺駐車場を探す</a>
+<a class="btn sub" href="https://travel.rakuten.co.jp/" target="_blank" rel="nofollow sponsored noopener">🏨 周辺ホテルを見る</a>
+</div>
+</section>
 
-    <div class="alert">
-      ⚠️ 人気エリア・グッズ売り場・飲食店は早め行動推奨。子連れなら「午前集中型」がおすすめ。
-    </div>
+<section class="card">
+<h2>海遊館</h2>
+<div class="badge ok">★★☆☆☆ 夕方狙いならおすすめ</div>
+<p>
+GW本番のピークは5/3〜5に寄りやすく、4/30は比較的狙いやすい日です。
+ただし昼前後は家族連れ・観光客で混みやすいため、子連れなら開館直後か夕方以降が動きやすいです。
+</p>
+<h3>子連れなら</h3>
+<ul>
+<li>夕方以降は比較的おすすめ</li>
+<li>eチケット事前購入が安心</li>
+<li>所要時間は2.5〜3.5時間を目安</li>
+</ul>
+<div class="cta">
+<strong>行く前に確認</strong>
+<a class="btn" href="https://www.kaiyukan.com/" target="_blank" rel="noopener">🎫 海遊館公式情報を確認</a>
+<a class="btn sub" href="https://travel.rakuten.co.jp/" target="_blank" rel="nofollow sponsored noopener">🏨 天保山・大阪市内ホテルを見る</a>
+</div>
+</section>
 
-    <div class="cta">
-      <h2>👇 USJへ行くなら事前確認</h2>
-      <a class="btn" href="https://travel.rakuten.co.jp/" target="_blank" rel="nofollow sponsored noopener">🏨 USJ周辺ホテルを探す</a>
-      <a class="btn sub" href="https://www.usj.co.jp/web/ja/jp/tickets/" target="_blank" rel="noopener">🎫 USJ公式チケットを確認</a>
-      <p class="small-note">※アフィリエイトリンクに差し替え予定。まずは公式・旅行リンクで導線確認中です。</p>
-    </div>
+<section class="card">
+<h2>ニフレル</h2>
+<div class="badge ok">★★☆☆☆ 短時間おでかけ向き</div>
+<p>
+ニフレルは屋内中心で、子連れでも回りやすいスポットです。
+ただし4〜5月は団体利用が多い時期で、午前中は混みやすい場合があります。
+EXPOCITYとセットで行く人も多いため、昼前後の駐車場には注意。
+</p>
+<h3>子連れなら</h3>
+<ul>
+<li>午前の団体時間を避けるなら昼過ぎ〜夕方</li>
+<li>短時間で満足しやすい</li>
+<li>EXPOCITYの食事混雑に注意</li>
+</ul>
+<div class="cta">
+<strong>行く前に確認</strong>
+<a class="btn" href="https://www.nifrel.jp/" target="_blank" rel="noopener">🎫 ニフレル公式情報を確認</a>
+<a class="btn sub" href="https://www.akippa.com/" target="_blank" rel="nofollow sponsored noopener">🚗 周辺駐車場を探す</a>
+</div>
+</section>
 
-    <h2>参考にした情報</h2>
-    <div class="source">
-      ・公開されている待ち時間・混雑情報<br>
-      ・大型連休中の来場傾向<br>
-      ・子連れでの移動・食事・待ち時間リスク
-    </div>
-  </section>
+<section class="card">
+<h2>ららぽーとEXPOCITY</h2>
+<div class="badge warn">★★★☆☆ 駐車場注意</div>
+<p>
+買い物・食事・ニフレル・観覧車がまとまっていて便利ですが、GW期間は周辺道路と駐車場が混みやすいです。
+無料巡回バスがGW期間中に休止される案内もあり、アクセス方法は事前確認がおすすめです。
+</p>
+<h3>子連れなら</h3>
+<ul>
+<li>雨の日・短時間外出には強い</li>
+<li>昼食時間帯はフードコート混雑に注意</li>
+<li>車なら駐車場待ちを見込む</li>
+</ul>
+<div class="cta">
+<strong>行く前に確認</strong>
+<a class="btn" href="https://www.expocity-mf.com/expo/" target="_blank" rel="noopener">🛍 EXPOCITY公式情報を確認</a>
+<a class="btn sub" href="https://www.akippa.com/" target="_blank" rel="nofollow sponsored noopener">🚗 周辺駐車場を探す</a>
+</div>
+</section>
 
-  <section class="card">
-    <div class="spot-title">万博記念公園</div>
-    <div class="meta">大阪府吹田市 / 公式イベント情報ベース / 子連れ目線</div>
-    <div class="score danger">混雑度：★★★★☆　イベント混雑注意</div>
+<section class="card">
+<h2>天王寺動物園</h2>
+<div class="badge ok">★★☆☆☆ 4/30なら比較的あり</div>
+<p>
+GW期間中は混雑対策が出ていますが、一方通行規制の対象は主に5/2〜5/6です。
+4/30は谷間平日のため、後半連休よりは動きやすい可能性があります。
+てんしばとセットで楽しめるので、短時間のおでかけにも向いています。
+</p>
+<h3>子連れなら</h3>
+<ul>
+<li>午前中に入園すると回りやすい</li>
+<li>昼はてんしば周辺の飲食混雑に注意</li>
+<li>ベビーカーでも比較的行きやすい</li>
+</ul>
+<div class="cta">
+<strong>行く前に確認</strong>
+<a class="btn" href="https://www.tennojizoo.jp/" target="_blank" rel="noopener">🐘 天王寺動物園公式情報を確認</a>
+<a class="btn sub" href="https://travel.rakuten.co.jp/" target="_blank" rel="nofollow sponsored noopener">🏨 天王寺周辺ホテルを見る</a>
+</div>
+</section>
 
-    <h2>結論</h2>
-    <p>
-      万博記念公園は園内が広いため、USJのように全体がぎゅうぎゅうになるというより、
-      イベント会場・花のエリア・飲食周辺・駐車場に混雑が集中しやすい日です。
-      車で行く場合は駐車場待ちや周辺道路の渋滞に注意してください。
-    </p>
+<section class="card">
+<h2>京都水族館</h2>
+<div class="badge ok">★★☆☆☆ 夕方ならおすすめ</div>
+<p>
+京都水族館はGW後半の5/3〜5が混雑の山になりやすいですが、4/30は平日扱いで比較的狙いやすい日です。
+ただし京都観光とセットで来る人がいるため、昼前後は混みやすいです。
+</p>
+<h3>子連れなら</h3>
+<ul>
+<li>午前早めか17時以降が狙い目</li>
+<li>京都駅から近く、電車移動しやすい</li>
+<li>梅小路公園とセットで遊びやすい</li>
+</ul>
+<div class="cta">
+<strong>行く前に確認</strong>
+<a class="btn" href="https://www.kyoto-aquarium.com/" target="_blank" rel="noopener">🎫 京都水族館公式情報を確認</a>
+<a class="btn sub" href="https://travel.rakuten.co.jp/" target="_blank" rel="nofollow sponsored noopener">🏨 京都駅周辺ホテルを見る</a>
+</div>
+</section>
 
-    <h2>背景情報</h2>
-    <p>
-      大型連休中は、通常の公園利用に加えて、イベント・花の見頃・キッチンカー目的の来園が重なりやすくなります。
-      園内でのんびり過ごすなら相性は良いですが、「車で昼前に到着」はかなりストレスが出やすいパターンです。
-    </p>
+<section class="card">
+<h2>大阪城公園</h2>
+<div class="badge ok">★★☆☆☆ 広くて分散しやすい</div>
+<p>
+大阪城公園は広いため、子連れで歩く・休憩するには使いやすいスポットです。
+ただし天守閣や周辺観光エリアは観光客が集まりやすく、昼前後は混雑しやすいです。
+</p>
+<h3>子連れなら</h3>
+<ul>
+<li>公園メインならあり</li>
+<li>天守閣目的なら午前早め</li>
+<li>ベビーカーなら移動距離に注意</li>
+</ul>
+<div class="cta">
+<strong>行く前に確認</strong>
+<a class="btn" href="https://www.osakacastlepark.jp/" target="_blank" rel="noopener">🏯 大阪城公園公式情報を確認</a>
+<a class="btn sub" href="https://travel.rakuten.co.jp/" target="_blank" rel="nofollow sponsored noopener">🏨 大阪市内ホテルを見る</a>
+</div>
+</section>
 
-    <h2>混みやすい場所</h2>
-    <ul>
-      <li>イベント会場周辺：昼前後に人が集まりやすいです。</li>
-      <li>花のエリア：写真目的の人で立ち止まりが増えやすいです。</li>
-      <li>飲食・キッチンカー周辺：昼食時間帯は行列になりやすいです。</li>
-      <li>駐車場・周辺道路：満車や渋滞のリスクがあります。</li>
-    </ul>
+<section class="card">
+<h2>4/30の結論</h2>
+<div class="badge ok">子連れなら：海遊館・ニフレル・電車で万博</div>
+<p>
+明日4/30は、GW後半のピーク前なので「完全に避ける日」ではありません。
+ただし車で万博・EXPOCITY方面へ行く場合は、駐車場と周辺道路のストレスを見込んでおくのが安全です。
+</p>
+<p>
+迷ったら、屋内で失敗しにくい海遊館・ニフレル、広く遊べる万博記念公園を電車で、という判断がおすすめです。
+</p>
+</section>
 
-    <h2>子連れ目線のおすすめ行動</h2>
-    <ul>
-      <li>車より公共交通機関の方が安心です。</li>
-      <li>行くなら午前中早めの到着がおすすめです。</li>
-      <li>昼食時間帯を避けると動きやすくなります。</li>
-      <li>混雑したイベント中心部より、少し離れた芝生エリアを拠点にすると楽です。</li>
-    </ul>
+<div class="footer">
+※本ページは公開情報・混雑傾向・子連れ目線をもとにした参考情報です。実際の営業状況、チケット、駐車場、イベント内容は公式サイトもあわせてご確認ください。<br>
+※一部リンクは今後アフィリエイトリンクに差し替える可能性があります。
+</div>
 
-    <div class="alert">
-      ⚠️ 駐車場満車・周辺道路渋滞の可能性あり。車の場合は早め到着、または駐車場予約・公共交通機関を検討。
-    </div>
-
-    <div class="cta">
-      <h2>👇 万博記念公園へ行くなら事前確認</h2>
-      <a class="btn" href="https://www.akippa.com/" target="_blank" rel="nofollow sponsored noopener">🚗 周辺駐車場を探す</a>
-      <a class="btn sub" href="https://travel.rakuten.co.jp/" target="_blank" rel="nofollow sponsored noopener">🏨 周辺ホテルを探す</a>
-      <p class="small-note">※アフィリエイトリンクに差し替え予定。まずは駐車場・旅行導線の確認用です。</p>
-    </div>
-
-    <h2>参考にした情報</h2>
-    <div class="source">
-      ・万博記念公園のイベント開催情報<br>
-      ・大型連休中の駐車場・周辺道路混雑リスク<br>
-      ・子連れでの移動・食事・休憩しやすさ
-    </div>
-  </section>
-
-  <section class="card">
-    <div class="spot-title">今日のおすすめ判断</div>
-    <div class="score ok">子連れなら：万博は電車、USJは午前集中</div>
-    <p>
-      「アトラクションを楽しみたい」ならUSJ、「広い場所でゆっくり過ごしたい」なら万博記念公園が候補です。
-      ただし、万博は車移動のストレスが出やすいため、公共交通機関を使えるかどうかで満足度が大きく変わります。
-    </p>
-    <p>
-      迷ったら、午前から動けるならUSJ、昼以降にゆるく出るなら万博を電車で、という判断がおすすめです。
-    </p>
-  </section>
-
-  <div class="footer">
-    ※本ページは公開情報・混雑傾向・子連れ目線をもとにした参考情報です。実際の営業状況、チケット、駐車場、イベント内容は公式サイトもあわせてご確認ください。<br>
-    ※一部リンクは今後アフィリエイトリンクに差し替える可能性があります。
-  </div>
 </main>
 </body>
 </html>
