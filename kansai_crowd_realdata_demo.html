@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>関西子連れ混雑速報 Demo - 実データ反映</title>
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#fff; --text:#111827; --muted:#6b7280;
+      --accent:#2563eb; --danger:#ef4444; --warn:#f59e0b; --ok:#10b981;
+      --line:#e5e7eb;
+    }
+    body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);}
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10;padding:14px 16px;}
+    header h1{font-size:18px;margin:0;}
+    header p{font-size:12px;color:var(--muted);margin:4px 0 0;}
+    main{max-width:760px;margin:0 auto;padding:16px;}
+    .hero{background:linear-gradient(135deg,#111827,#2563eb);color:white;border-radius:18px;padding:18px;margin-bottom:14px;}
+    .hero .label{font-size:12px;opacity:.85;}
+    .hero .title{font-size:23px;font-weight:800;margin:6px 0;line-height:1.35;}
+    .hero .sub{font-size:13px;opacity:.95;line-height:1.6;}
+    .note{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:14px;padding:12px;font-size:13px;line-height:1.6;margin-bottom:12px;}
+    .tabs{display:flex;gap:8px;overflow:auto;margin:14px 0;}
+    .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-size:13px;white-space:nowrap;cursor:pointer;}
+    .tab.active{background:#111827;color:#fff;border-color:#111827;}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.03);}
+    .row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;}
+    .name{font-size:18px;font-weight:800;}
+    .area{font-size:12px;color:var(--muted);margin-top:3px;}
+    .score{font-size:13px;text-align:right;min-width:100px;}
+    .stars{font-size:18px;letter-spacing:1px;}
+    .badge{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:700;margin-top:6px;}
+    .b-danger{background:#fee2e2;color:#b91c1c;}
+    .b-warn{background:#fef3c7;color:#92400e;}
+    .b-ok{background:#d1fae5;color:#065f46;}
+    .summary{margin:12px 0 0;padding-left:18px;font-size:14px;line-height:1.75;}
+    .meta{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:12px;}
+    .btns{display:flex;gap:8px;margin-top:12px;}
+    button{border:0;border-radius:12px;padding:10px 12px;font-weight:700;cursor:pointer;}
+    .primary{background:var(--accent);color:white;flex:1;}
+    .secondary{background:#eef2ff;color:#3730a3;}
+    .panel{display:none;margin-top:12px;border-top:1px solid var(--line);padding-top:12px;}
+    .panel.show{display:block;}
+    .post{font-size:13px;background:#f9fafb;border-radius:12px;padding:10px;margin:8px 0;color:#374151;line-height:1.55;}
+    .small{font-size:12px;color:var(--muted);}
+    .alert{border-left:4px solid var(--danger);padding-left:10px;}
+    .source a{color:#2563eb;text-decoration:none;font-weight:700;}
+    .footer{font-size:12px;color:var(--muted);line-height:1.6;margin:20px 4px;}
+    @media(min-width:700px){header h1{font-size:20px}.hero .title{font-size:28px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>関西子連れ混雑速報 Demo</h1>
+    <p>実データ反映テスト｜作成日時：2026/04/29 01:25</p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="label">今日 2026/4/29 の判断</div>
+      <div class="title">USJは中〜やや混雑。万博記念公園はイベント開催で駐車場注意。</div>
+      <div class="sub">今回はX投稿そのものは十分に取得できなかったため、公開Web上で取得できたUSJ待ち時間・万博公式イベント情報をAI要約風に反映しています。</div>
+    </section>
+
+    <div class="note">
+      <strong>取得テスト結果：</strong><br>
+      Xの今日投稿は、ログイン制限・検索結果の不安定さで実用的な件数を取得できませんでした。MVPでは「X検索URLを開く → 手動確認」か「X API / SerpAPI / Google検索API」を併用する設計が現実的です。
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="filterCards('all', this)">すべて</div>
+      <div class="tab" onclick="filterCards('recommend', this)">おすすめ</div>
+      <div class="tab" onclick="filterCards('crowded', this)">混雑注意</div>
+      <div class="tab" onclick="simulateUpdate()">疑似更新</div>
+    </div>
+
+    <div id="cards"></div>
+
+    <div class="footer">
+      ※このデモは公開Web情報からの反映イメージです。実運用では情報の出典・取得時刻・信頼度を表示し、SNS投稿は規約に沿って引用またはリンク表示にします。
+    </div>
+  </main>
+
+<script>
+let spots = [
+  {
+    id:1, name:"USJ", area:"大阪市此花区", score:3, tag:"crowded",
+    status:"中〜やや混雑", badge:"b-warn",
+    updated:"公開データ 09:45時点", sources:2, confidence:"中",
+    summary:[
+      "公開待ち時間データでは、リアルタイム混雑はB、待ち時間目安は約50分。",
+      "営業は8:30〜21:30。天気は曇、気温22℃の情報。",
+      "子連れなら人気エリアを優先し、昼以降の混雑上昇に注意。"
+    ],
+    alerts:["人気アトラクション・任天堂エリアは早め確認推奨"],
+    posts:[
+      "ユニバリアル：2026/4/29 09:45時点のリアルタイム混雑 B、待ち時間50分。",
+      "ユニバリアル：当日券販売あり。現地チケット販売なし、WEBチケットストア案内。",
+      "検索結果：4/29は祝日のため、混雑しやすい日として扱われている。"
+    ],
+    sourceLinks:[
+      ["USJ 今日のパーク情報", "https://usjreal.asumirai.info/"],
+      ["USJ 今日これまでの待ち時間", "https://usjreal.asumirai.info/realtime/usj-wait-today-ls.html"]
+    ]
+  },
+  {
+    id:2, name:"万博記念公園", area:"大阪府吹田市", score:4, tag:"crowded",
+    status:"イベント混雑注意", badge:"b-warn",
+    updated:"公式情報ベース", sources:3, confidence:"高",
+    summary:[
+      "ロハスフェスタ万博2026春が東の広場で開催。時間は9:30〜16:30。",
+      "ポピー・ネモフィラフェスタは4/29まで。花の丘で開催、キッチンカーも11:00〜15:00予定。",
+      "公式が行楽シーズン・イベント日は周辺道路や駐車場の大変な混雑に注意喚起。公共交通機関推奨。"
+    ],
+    alerts:["駐車場・周辺道路の混雑リスクあり","イベント終了前後の移動集中に注意"],
+    posts:[
+      "万博記念公園公式：ロハスフェスタは4/29も開催、東の広場、9:30〜16:30。",
+      "万博記念公園公式：ポピー・ネモフィラフェスタは4/29まで、花の丘で開催。",
+      "万博記念公園公式：行楽シーズン・イベント日は駐車場満車や周辺道路混雑の可能性。"
+    ],
+    sourceLinks:[
+      ["ロハスフェスタ万博 2026春", "https://www.expo70-park.jp/event/75658/"],
+      ["ポピー・ネモフィラフェスタ", "https://www.expo70-park.jp/event/74943/"],
+      ["周辺道路・駐車場が大変混雑します", "https://www.expo70-park.jp/parking-expocity/"]
+    ]
+  }
+];
+
+function stars(n){
+  return "★".repeat(n) + "☆".repeat(5-n);
+}
+function render(filter="all"){
+  const wrap = document.getElementById("cards");
+  wrap.innerHTML = "";
+  const list = spots.filter(s => filter==="all" || s.tag===filter || (filter==="recommend" && s.score<=2) || (filter==="crowded" && s.score>=3));
+  list.forEach(s=>{
+    const el = document.createElement("section");
+    el.className = "card";
+    el.innerHTML = `
+      <div class="row">
+        <div>
+          <div class="name">${s.name}</div>
+          <div class="area">${s.area}</div>
+        </div>
+        <div class="score">
+          <div class="stars">${stars(s.score)}</div>
+          <span class="badge ${s.badge}">${s.status}</span>
+        </div>
+      </div>
+      <ul class="summary">${s.summary.map(x=>`<li>${x}</li>`).join("")}</ul>
+      ${s.alerts.length ? `<div class="summary alert">${s.alerts.map(x=>`⚠️ ${x}`).join("<br>")}</div>` : ""}
+      <div class="meta">
+        <span>${s.updated}</span><span>参照数：${s.sources}</span><span>信頼度：${s.confidence}</span>
+      </div>
+      <div class="btns">
+        <button class="primary" onclick="togglePanel(${s.id})">取得データを見る</button>
+        <button class="secondary" onclick="alert('ここにチケット/駐車場/予約アフィリエイト導線を設置')">予約導線</button>
+      </div>
+      <div class="panel" id="panel-${s.id}">
+        <div class="small">取得・要約した根拠データ</div>
+        ${s.posts.map(p=>`<div class="post">${p}</div>`).join("")}
+        <div class="small source">出典：${s.sourceLinks.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`).join(" / ")}</div>
+      </div>
+    `;
+    wrap.appendChild(el);
+  });
+}
+function togglePanel(id){
+  document.getElementById("panel-"+id).classList.toggle("show");
+}
+function filterCards(filter, node){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  node.classList.add("active");
+  render(filter);
+}
+function simulateUpdate(){
+  const expo = spots.find(s=>s.name==="万博記念公園");
+  expo.score = 5;
+  expo.status = "駐車場かなり注意";
+  expo.badge = "b-danger";
+  expo.updated = new Date().toLocaleTimeString("ja-JP",{hour:"2-digit",minute:"2-digit"}) + " 疑似更新";
+  expo.summary = [
+    "イベント開催日かつ祝日のため、駐車場・周辺道路混雑リスクを強めに判定。",
+    "子連れなら公共交通機関利用、または早めの退園がおすすめ。",
+    "速報アラートとして『駐車場注意』をトップ表示に変更。"
+  ];
+  expo.alerts = ["疑似更新：混雑スコア上昇を検知","疑似更新：公共交通機関推奨"];
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.querySelector(".tab").classList.add("active");
+  render("all");
+}
+render();
+</script>
+</body>
+</html>
